@@ -1,10 +1,19 @@
 import svg_generator as svg_generator
 import svg_to_png as svg_to_png
+import os
 
 
 #----------------------------------------------
 # MAIN
 #----------------------------------------------
+if not os.path.exists('./dataset'):
+    os.makedirs('./dataset')
+
+if not os.path.exists('./dataset/svg_data'):
+    os.makedirs('./dataset/svg_data')
+
+if not os.path.exists('./dataset/png_data'):
+    os.makedirs('./dataset/png_data')
 
 # num_images = int(input("Enter number of images to generate: "))
 num_images = 30000

@@ -30,13 +30,13 @@ Supervisor: Majid Komeili
 
 ## Run Instruction
 
-  1. [Skip | Already done] Generate the dataset:
+  1. Generate the dataset:
   ```
       $ python3 ./data_generator/generator_main.py
   ```
   this will add 30,000 images under `/dataset/png_data/` and `/dataset/svg_data/`
 
-  2. [Skip | Already done] Preprocess data:
+  2. Preprocess data:
   ```
       $ python3 ./preprocess_data/preprocess_main.py
   ```
