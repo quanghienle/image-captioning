@@ -33,10 +33,15 @@ EMBEDDING_SIZE = 256
 print('\nInitializing Model...')
 model = ImageCaptioningModel(tokenizer, VOCAB_SIZE, EMBEDDING_SIZE, MAX_TEXT_LENGTH)
 
+
 # Add checkpoints
-print('\nAdding Checkpoints...')
-checkpoint_path = './model_checkpoints/model_1'
-model.add_checkpoint(checkpoint_path, True)
+load_checkpoints = 'k'
+while load_checkpoints !='y' and load_checkpoints!='n':
+    load_checkpoints = input('Load previously saved checkpoints? (y/n): ')
+
+if load_checkpoints=='y':
+    checkpoint_path = './model_checkpoints/model_1'
+    model.add_checkpoint(checkpoint_path, True)
 
 
 def start_training():

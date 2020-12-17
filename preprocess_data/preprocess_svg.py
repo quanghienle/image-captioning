@@ -2,14 +2,20 @@ import glob
 import numpy as np
 import pickle
 
-import utils as utils
+def get_name_from_file(file_name):
+    """ get file names from path
+        file names here are just numbers that match the png with svg file
+    """
+    file_number = file_name.split('/')[-1].split('.')[0]
+    return int(file_number)
 
-def get_svg_arr():
-    svg_images = glob.glob('../dataset/svg_data/*.svg')
+
+def get_svg_arr(svg_path):
+    svg_images = glob.glob(f'{svg_path}/*.svg')
     svg_arr = [None] * len(svg_images)
     for i in svg_images:
         f = open(i, 'r')
-        svg_arr[utils.get_name_from_file(i)] = f.read()
+        svg_arr[get_name_from_file(i)] = f.read()
 
     return np.array(svg_arr)
 
@@ -41,13 +47,13 @@ def formatSVG(svg):
     sentence = ''.join([clean_up_char(c) for c in trimmed_svg])
     return f'<start> {sentence} <end>'
 
-def clean_and_save_svg():
+def clean_and_save_svg(svg_path, dest_path):
     print('Cleaning SVG data...')
-    svg_data = get_svg_arr()
+    svg_data = get_svg_arr(svg_path)
     clean_data = np.array([formatSVG(svg) for svg in svg_data])
 
     print('Saving clean SVG data to dataset/preprocessed_data/Y.pkl')
-    with open('../dataset/preprocessed_data/Y.pkl','wb') as f:
+    with open(f'{dest_path}/Y.pkl','wb') as f:
         pickle.dump(clean_data, f)
 
     print('DONE')
