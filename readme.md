@@ -1,8 +1,4 @@
-Author: Hien Le (101044264)
-Supervisor: Majid Komeili
 
-
-## COMP4905: Honours Project
 ## SVG Image Captioning with CNN and LSTM
 
 
